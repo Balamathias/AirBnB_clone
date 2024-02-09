@@ -50,6 +50,6 @@ Welcome to the AirBnB clone project! This project aims to build a simplified ver
 
 ## Contributors
 
-- [Your Name]
-- [Another Contributor]
+- [Adegboyega Ademola]
+- [Mathias Bala]
 
