@@ -1,51 +1,50 @@
+#!/usr/bin/python3
+"""Module for FileStorage class."""
 import json
-from os import path
 from models.base_model import BaseModel
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class FileStorage:
+    """Handles serialization and deserialization of objects to/from JSON."""
+
     __file_path = "file.json"
-    __objects = {}
+    __objects = {"BaseModel": BaseModel, "State": State, "City": City,
+                 "Amenity": Amenity, "Place": Place, "Review": Review}
 
     def all(self):
-        return self.__objects
+        """Return the dictionary __objects."""
+        return FileStorage.__objects
 
     def new(self, obj):
+        """Add a new object to __objects."""
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key] = obj
+        FileStorage.__objects[key] = obj
 
+    
     def save(self):
-        obj_dict = {key: obj.to_dict() for key, obj in self.__objects.items()}
-        with open(self.__file_path, 'w', encoding='utf-8') as file:
-            json.dump(obj_dict, file)
+        """Serialize __objects to the JSON file (path: __file_path)."""
+        serialized_objects = {}
+        for key, value in self.__objects.items():
+            serialized_objects[key] = value.to_dict()
+
+        with open(self.__file_path, 'w', encoding='utf-8') as f:
+            json.dump(serialized_objects, f)
+
 
     def reload(self):
-        from models.base_model import BaseModel
-        from models.user import User
-        from models.state import State
-        from models.city import City
-        from models.amenity import Amenity
-        from models.place import Place
-        from models.review import Review
-        
-        classes = {
-            'BaseModel': BaseModel,
-            'User': User,
-            'State': State,
-            'City': City,
-            'Amenity': Amenity,
-            'Place': Place,
-            'Review': Review
-        }
-
+        """Load objects from the JSON file."""
         try:
-            with open(self.__file_path, mode='r', encoding='utf-8') as file:
-                obj_dict = json.load(file)
-            for key, value in obj_dict.items():
-                class_name, obj_id = key.split('.')
-                cls = classes[class_name]
-                instance = cls(**value)
-                self.__objects[key] = instance
+            with open(FileStorage.__file_path, 'r') as file:
+                data = json.load(file)
+                for key, obj_dict in data.items():
+                    cls_name = obj_dict['__class__']
+                    del obj_dict['__class__']
+                    obj = FileStorage.__objects[cls_name](**obj_dict)
+                    FileStorage.__objects[key] = obj
         except FileNotFoundError:
             pass
-                
