@@ -4,6 +4,7 @@ import cmd
 import re
 from shlex import split
 from models import storage
+import models
 from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.city import City

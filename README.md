@@ -48,8 +48,5 @@ Welcome to the AirBnB clone project! This project aims to build a simplified ver
 - All modules, classes, and functions should have proper documentation.
 - All files must be executable.
 
-## Contributors
 
-- [Adegboyega Ademola]
-- [Mathias Bala]
 

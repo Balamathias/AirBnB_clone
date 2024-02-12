@@ -43,6 +43,7 @@ class FileStorage:
         key = "{}.{}".format(type(obj).__name__, obj.id)
         FileStorage.__objects[key] = obj
 
+
     def save(self):
         """Serialzes __objects to JSON file."""
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
