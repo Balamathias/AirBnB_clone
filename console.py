@@ -184,41 +184,41 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print('** class name missing **')
             return
+
         try:
             class_name = args[0]
-            if len(args) == 1:
+            if len(args) < 2:
                 print('** instance id missing **')
                 return
+
             instance_id = args[1]
             key = "{}.{}".format(class_name, instance_id)
             all_objects = models.storage.all()
+
             if key not in all_objects:
                 print('** no instance found **')
                 return
-            if len(args) == 2:
-                print('** attribute dictionary missing **')
-                return
 
-            attribute_dict_str = ' '.join(args[2:])
-            try:
-                attribute_dict = ast.literal_eval(attribute_dict_str)
-                if not isinstance(attribute_dict, dict):
-                    raise ValueError
-            except (ValueError, SyntaxError):
-                print('** invalid attribute dictionary **')
-                return
             instance = all_objects[key]
-            
-            # Update the code to call the correct update method based on class_name
-            update_method = getattr(instance, 'update_attributes', None)
-            if update_method:
-                update_method(attribute_dict)
-                models.storage.save()
-            else:
-                print(f"** update_attributes method not found in {class_name} **")
 
-        except NameError:
-            print('** class doesn\'t exist **')
+            if len(args) < 3:
+                print('** attribute name missing **')
+                return
+
+            attribute_name = args[2]
+            if len(args) < 4:
+                print('** value missing **')
+                return
+
+            attribute_value = args[3]
+            
+            # Update the attribute of the instance
+            setattr(instance, attribute_name, attribute_value)
+            instance.save()
+
+        except Exception as e:
+            print(e)
+
 
 
 
