@@ -1,0 +1,22 @@
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.locations, .amenities {
+    width: 48%;
+}
+
+.locations h3, .amenities h3 {
+    margin-bottom: 10px;
+}
+
+.popover {
+    list-style: none;
+    padding: 0;
+}
+
+/* Add more filters styles as needed */

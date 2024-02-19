@@ -1,0 +1,43 @@
+.amenities,
+.reviews {
+    margin-top: 40px;
+}
+
+.amenities .title,
+.reviews .title {
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.amenities-list,
+.reviews-list {
+    list-style: none;
+    padding: 0;
+}
+
+.amenities-list li,
+.reviews-list li {
+    display: flex;
+    align-items: center;
+}
+
+.amenities-list li::before,
+.reviews-list li::before {
+    content: "•"; /* Bullet point */
+    margin-right: 10px;
+}
+
+.amenities-list li:nth-child(1)::before,
+.amenities-list li:nth-child(2)::before,
+.amenities-list li:nth-child(3)::before {
+    /* Icons or special styles for the first few amenities */
+    content: "🐾";
+    margin-right: 10px;
+}
+
+.reviews-list h3 {
+    font-size: 14px;
+}
+
+.reviews-list p {
+    font-size: 12px;
+}

@@ -1,0 +1,17 @@
+/* Common styles for accessibility */
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+h1, h2, h3, h4 {
+    color: #333;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Add more common accessibility styles as needed */

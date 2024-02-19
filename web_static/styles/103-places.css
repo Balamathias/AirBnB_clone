@@ -1,0 +1,58 @@
+/* Places styles for accessibility */
+
+.places {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.place {
+    flex: 1 1 300px;
+    margin: 20px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.place h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.price_by_night {
+    color: #FF5A5F;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.information {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.max_guest, .number_rooms, .number_bathrooms {
+    flex: 1 1 100px;
+    margin-right: 20px;
+}
+
+.user, .description, .amenities, .reviews {
+    margin-top: 20px;
+}
+
+/* Add more places accessibility styles as needed */
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .places {
+        flex-direction: column;
+    }
+
+    .place {
+        flex: 1 1 100%;
+    }
+    
+    /* Add more responsive styles as needed */
+}
