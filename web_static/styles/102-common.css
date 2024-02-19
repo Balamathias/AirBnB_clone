@@ -1,17 +1,22 @@
-/* Reset some default styles */
-body, h1, h2, h3, p {
-    margin: 0;
-    padding: 0;
-}
+/*
+ * === Global style ===
+ */
 
-body {
-    font-family: Arial, sans-serif;
-}
-
-.container {
+/* Global style */
+body{
+    color: #484848;
+    font: 14px Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+ }
+ html, body {
+    width: 100%;
+    overflow-x: hidden;
+ }
+ .container{
+    margin: 30px auto;
     max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
+ }
 
-/* Add more common styles as needed */
+ /*strong*/
+ strong {
+   font-weight: bold;
+ }
